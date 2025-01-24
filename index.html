@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Journal App</title>
+  <title>Journal Ancien</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="journal-container">
-    <!-- Les pages seront ajoutées ici dynamiquement -->
-    <div class="page active">
-      <div class="chapter-name">
-        <input type="text" id="chapter-title" placeholder="Titre du chapitre">
+    <div class="page-turn" id="prev-page">◀</div>
+    <div class="page-wrapper">
+      <div class="page" id="journal-page">
+        <div class="chapter-name">
+          <input type="text" id="chapter-title" placeholder="Chapitre d'aujourd'hui...">
+        </div>
+        <textarea id="page-content" placeholder="Raconte ta journée sans tabou..."></textarea>
       </div>
-      <textarea id="page-content" placeholder="Écris ton texte ici..."></textarea>
     </div>
+    <div class="page-turn" id="next-page">▶</div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
