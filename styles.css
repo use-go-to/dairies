@@ -6,9 +6,10 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f3e7da;
-  }
-  
-  .journal-container {
+    overflow: hidden;  /* Pour éviter les barres de défilement */
+}
+
+.journal-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,17 +21,18 @@ body {
     position: relative;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
     perspective: 1500px; /* Crée la perspective 3D pour la page qui se plie */
-  }
-  
-  .page-wrapper {
+    overflow: hidden;
+}
+
+.page-wrapper {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-  }
-  
-  .page {
-    width: 90%;
+}
+
+.page {
+    width: 100%;
     height: 100%;
     background-color: #fff7e6;
     border: 1px solid #7b5e57;
@@ -46,9 +48,9 @@ body {
     transform-origin: left center; /* Origine de la transformation pour faire pivoter la page */
     backface-visibility: hidden; /* Cache le dos de la page lorsqu'elle est tournée */
     transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Animation fluide */
-  }
-  
-  .chapter-name input {
+}
+
+.chapter-name input {
     font-size: 18px;
     font-weight: bold;
     width: 100%;
@@ -57,9 +59,9 @@ body {
     outline: none;
     background: transparent;
     border-bottom: 2px solid #7b5e57;
-  }
-  
-  textarea {
+}
+
+textarea {
     flex-grow: 1;
     width: 100%;
     height: 100%;
@@ -78,18 +80,47 @@ body {
       #000 23px,
       #fff7e6 24px
     );
-  }
-  
-  .page-turn {
-    font-size: 24px;
+}
+
+.page-turn {
+    font-size: 30px;
     font-weight: bold;
     cursor: pointer;
     color: #7b5e57;
     padding: 20px;
     user-select: none;
-  }
-  
-  .page-turn:hover {
+    position: absolute;
+    top: 50%;  /* Centrer verticalement */
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+#prev-page {
+    left: 10px; /* Bouton précédent à gauche */
+}
+
+#next-page {
+    right: 10px; /* Bouton suivant à droite */
+}
+
+.page-turn:hover {
     color: #4a3a36;
-  }
-  
+}
+
+/* Responsivité pour les petits écrans */
+@media (max-width: 600px) {
+    .page-turn {
+        font-size: 24px; /* Taille réduite des boutons sur mobile */
+        padding: 10px;   /* Espacement réduit pour les petits écrans */
+    }
+
+    .page {
+        width: 100%;  /* Prend toute la largeur */
+        height: 100%; /* Prend toute la hauteur */
+        padding: 10px; /* Réduit les marges pour s'adapter à l'écran */
+    }
+
+    textarea {
+        font-size: 14px; /* Réduit la taille de la police pour un meilleur confort */
+    }
+}
